@@ -20,3 +20,10 @@ def transcribe(req: TranscribeRequest):
             "errorCode": e.code,
             "message": e.message
         }
+    except Exception as e:
+        return {
+            "success": False,
+            "episodeId": req.episode_id,
+            "errorCode": "UNEXPECTED_ERROR",
+            "message": str(e)
+        }
