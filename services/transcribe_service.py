@@ -14,3 +14,16 @@ def transcribe_episode(url: str, episode_id: int) -> dict:
         "episodeId": episode_id,
         "text": text
     }
+
+
+
+def transcribe_local_file(file_path: str, episode_id: int) -> dict:
+    text = transcribe(file_path)
+
+    if ENABLE_NLP:
+        text = normalize(text)
+
+    return {
+        "episodeId": episode_id,
+        "text": text
+    }
